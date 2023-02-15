@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using ConwayBusinessLogic;
+
 Console.WriteLine("Hello, World!");
 Console.WriteLine("Kérem az oszlopok számát!");
 var columnsSting = Console.ReadLine();
@@ -7,15 +9,16 @@ var rowsSting = Console.ReadLine();
 Console.WriteLine("Kérem az elemek/sejtek számát!");
 var cellsSting = Console.ReadLine();
 
-
-try
+var columns = 0;
+var rows = 0;
+var cells = 0;
+if (Int32.TryParse(columnsSting, out columns)
+    && Int32.TryParse(rowsSting, out rows)
+    && Int32.TryParse(cellsSting, out cells))
 {
-    var columns = Convert.ToInt32(columnsSting);
-    var rows = Convert.ToInt32(rowsSting);
-    var cells = Convert.ToInt32(cellsSting);
+    var playArea = new PlayArea(columns,rows,cells);
 }
-catch (Exception ex)
+else
 {
-    Console.WriteLine("Nem megfelelő értékek!");
-	return;
+    Console.WriteLine("Nem megfelelő értékek");
 }
